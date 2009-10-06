@@ -1,6 +1,13 @@
 #include <stdio.h>
 
-#include "lua.hpp"
+extern "C"
+{
+        #include "lua.h"
+        #include "lauxlib.h"
+        #include "lualib.h"
+}
+#include <luabind/luabind.hpp>
+
 
 #include "animator.h"
 #include "animatorfactory.h"
@@ -9,6 +16,7 @@
 
 int main(int argc,char* argv[])
 {
+
  lua_State *L;
  if (argc<2)
  {
@@ -26,11 +34,14 @@ int main(int argc,char* argv[])
  luaopen_string(L);
  //luaopen_math(L);
 
+ luabind::open(L);
+
+
  Animator::register_in_lua(L);
 
  if (luaL_loadfile(L,argv[1])==0){ // load and run the file
   if( lua_pcall(L,0,0,0) ) {
-    fprintf(stderr, "lua couldn't execute '%s': %s.\n",argv[1], lua_tostring(L, -1));
+    fprintf(stderr, "lua Error executing '%s': %s.\n",argv[1], lua_tostring(L, -1));
     lua_pop(L, 1);
   }
  }else{

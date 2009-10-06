@@ -10,25 +10,23 @@ class Animator;
 
 typedef std::tr1::shared_ptr<Animator> AnimatorPtr;
 
+
 class Animator {
 
   static int clock_period_ms_;
   int animate_time_ms_;
 public:
 
-  static void set_clock_period_ms( int period_ms) {
-    clock_period_ms_=period_ms;
-  }
-  static int clock_period_ms() {
-    return clock_period_ms_;
-  }
+  static void set_clock_period_ms( int period_ms);
+  static int clock_period_ms() ;
 
 protected:
+  friend std::tr1::shared_ptr<Animator> Animator_create(int time_ms);;
   Animator(int time_ms = -1) : animate_time_ms_(time_ms) { }
 
 public:
 
-  static AnimatorPtr create(int time_ms=-1);
+  static AnimatorPtr create(int time_ms);
   void clock_tick() {
     if( animate_time_ms_ > clock_period_ms_ ) {
       animate_time_ms_ -= clock_period_ms_;
