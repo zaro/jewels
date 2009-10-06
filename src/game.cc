@@ -3,9 +3,16 @@
 
 #include <climits>
 
+#include "animatorfactory.h"
+#include "stockanimators.h"
+
 Game::Game():
   end_game_(false)
 {
+  AnimatorFactory::register_animator("yaxe_rotator",Animator_YAxeRotator::create);
+  AnimatorFactory::register_animator("xaxe_rotator",Animator_XAxeRotator::create);
+  AnimatorFactory::print_animators();
+
   board = BoardPtr( new Board() );
   camera.eye() = Point(0,0,-4.0);
   light.pos() = Point(0,0,25.5);

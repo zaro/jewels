@@ -1,10 +1,13 @@
 #include "cubicjewel.h"
 #include "SDL/SDL_opengl.h"
 
+#include "animatorfactory.h"
+
 CubicJewel::CubicJewel(int name):
 ScreenObject(name),
 size_(.3)
 {
+  add_animator( AnimatorFactory::create_animator("xaxe_rotator") );
 }
 
 
@@ -68,7 +71,4 @@ void CubicJewel::do_draw(){
 	glEnd();
 }
 
-void CubicJewel::do_animate(){
-  rot_angle_ ++;
-}
 

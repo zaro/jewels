@@ -13,12 +13,19 @@ CXXFLAGS="-O0 -g3"
 
 AC_CHECK_LIB(stdc++, main,,AC_MSG_ERROR(jewels requires libstdc++))
 
-LIBS="-lGL -lGLU -lm"
+LIBS="-lGL -lGLU -lm "
 
 PKG_CHECK_MODULES(SDL, [
         sdl
 ])
 
+PKG_CHECK_MODULES(lua, [
+        lua5.1
+])
+
+PKG_CHECK_MODULES(luabind, [
+        luabind
+])
 
 AC_CONFIG_FILES([Makefile src/Makefile])
 AC_OUTPUT

@@ -2,6 +2,7 @@
 #include "SDL/SDL_opengl.h"
 #include "wobblycube.h"
 
+
 ScreenObject::ScreenObject(int name):
 rot_angle_(0.0),
 scale_(1.0),
@@ -48,4 +49,19 @@ void ScreenObject::animate(){
     selection->animate();
   }
   do_animate();
+}
+
+void ScreenObject::do_animate(){
+  AnimatorList::iterator i=animators_.begin();
+  if( i == animators_.end() )
+    return;
+  (*i)->next(center_,rot_vec_,rot_angle_);
+  if( (*i)->ended() ){
+    animators_.pop_front();
+  }
+}
+
+void ScreenObject::add_animator(AnimatorPtr animator){
+  animators_.push_back( animator );
+  animator->init(center_,rot_vec_,rot_angle_);
 }

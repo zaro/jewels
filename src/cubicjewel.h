@@ -8,7 +8,6 @@ class CubicJewel: public ScreenObject {
 public:
   CubicJewel(int name=-1);
   void do_draw();
-  void do_animate();
 };
 
 #endif //CUBICJEWEL_H
