@@ -32,7 +32,7 @@ POST_INSTALL = :
 NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
-bin_PROGRAMS = jewels$(EXEEXT) lua_test$(EXEEXT)
+bin_PROGRAMS = jewels$(EXEEXT) python_test$(EXEEXT)
 subdir = src
 DIST_COMMON = $(srcdir)/Makefile.am $(srcdir)/Makefile.in
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
@@ -51,10 +51,10 @@ am_jewels_OBJECTS = jewels.$(OBJEXT) game.$(OBJEXT) \
 	board.$(OBJEXT) animator.$(OBJEXT) animatorfactory.$(OBJEXT)
 jewels_OBJECTS = $(am_jewels_OBJECTS)
 jewels_LDADD = $(LDADD)
-am_lua_test_OBJECTS = lua_test.$(OBJEXT) animator.$(OBJEXT) \
+am_python_test_OBJECTS = python_test.$(OBJEXT) animator.$(OBJEXT) \
 	animatorfactory.$(OBJEXT)
-lua_test_OBJECTS = $(am_lua_test_OBJECTS)
-lua_test_LDADD = $(LDADD)
+python_test_OBJECTS = $(am_python_test_OBJECTS)
+python_test_LDADD = $(LDADD)
 DEFAULT_INCLUDES = -I.@am__isrc@
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
@@ -64,8 +64,8 @@ CXXCOMPILE = $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
 CXXLD = $(CXX)
 CXXLINK = $(CXXLD) $(AM_CXXFLAGS) $(CXXFLAGS) $(AM_LDFLAGS) $(LDFLAGS) \
 	-o $@
-SOURCES = $(jewels_SOURCES) $(lua_test_SOURCES)
-DIST_SOURCES = $(jewels_SOURCES) $(lua_test_SOURCES)
+SOURCES = $(jewels_SOURCES) $(python_test_SOURCES)
+DIST_SOURCES = $(jewels_SOURCES) $(python_test_SOURCES)
 ETAGS = etags
 CTAGS = ctags
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
@@ -141,10 +141,6 @@ libdir = @libdir@
 libexecdir = @libexecdir@
 localedir = @localedir@
 localstatedir = @localstatedir@
-lua_CFLAGS = @lua_CFLAGS@
-lua_LIBS = @lua_LIBS@
-luabind_CFLAGS = @luabind_CFLAGS@
-luabind_LIBS = @luabind_LIBS@
 mandir = @mandir@
 mkdir_p = @mkdir_p@
 oldincludedir = @oldincludedir@
@@ -161,10 +157,10 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 AUTOMAKE_OPTIONS = gnu
-AM_CPPFLAGS = $(SDL_CFLAGS) $(lua_CFLAGS) $(luabind_CFLAGS)
-AM_LDFLAGS = $(SDL_LIBS) $(lua_LIBS) $(luabind_LIBS)
+AM_CPPFLAGS = $(SDL_CFLAGS) `python-config --cflags` -DBOOST_PYTHON_STATIC_MODULE
+AM_LDFLAGS = $(SDL_LIBS) `python-config --libs` -lboost_python-mt-py26
 jewels_SOURCES = jewels.cc game.cc screenobject.cc material.cc materialfactory.cc camera.cc cubicjewel.cc wobblycube.cc light.cc board.cc animator.cc animatorfactory.cc
-lua_test_SOURCES = lua_test.cc animator.cc animatorfactory.cc
+python_test_SOURCES = python_test.cc animator.cc animatorfactory.cc
 all: all-am
 
 .SUFFIXES:
@@ -239,9 +235,9 @@ clean-binPROGRAMS:
 jewels$(EXEEXT): $(jewels_OBJECTS) $(jewels_DEPENDENCIES) 
 	@rm -f jewels$(EXEEXT)
 	$(CXXLINK) $(jewels_OBJECTS) $(jewels_LDADD) $(LIBS)
-lua_test$(EXEEXT): $(lua_test_OBJECTS) $(lua_test_DEPENDENCIES) 
-	@rm -f lua_test$(EXEEXT)
-	$(CXXLINK) $(lua_test_OBJECTS) $(lua_test_LDADD) $(LIBS)
+python_test$(EXEEXT): $(python_test_OBJECTS) $(python_test_DEPENDENCIES) 
+	@rm -f python_test$(EXEEXT)
+	$(CXXLINK) $(python_test_OBJECTS) $(python_test_LDADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -257,9 +253,9 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/game.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/jewels.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/light.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/lua_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/material.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/materialfactory.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/python_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/screenobject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/wobblycube.Po@am__quote@
 

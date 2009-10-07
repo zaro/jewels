@@ -19,13 +19,5 @@ PKG_CHECK_MODULES(SDL, [
         sdl
 ])
 
-PKG_CHECK_MODULES(lua, [
-        lua5.1
-])
-
-PKG_CHECK_MODULES(luabind, [
-        luabind
-])
-
 AC_CONFIG_FILES([Makefile src/Makefile])
 AC_OUTPUT

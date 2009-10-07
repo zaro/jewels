@@ -555,10 +555,6 @@ ac_subst_vars='am__EXEEXT_FALSE
 am__EXEEXT_TRUE
 LTLIBOBJS
 LIBOBJS
-luabind_LIBS
-luabind_CFLAGS
-lua_LIBS
-lua_CFLAGS
 SDL_LIBS
 SDL_CFLAGS
 PKG_CONFIG
@@ -659,11 +655,7 @@ CPPFLAGS
 CCC
 PKG_CONFIG
 SDL_CFLAGS
-SDL_LIBS
-lua_CFLAGS
-lua_LIBS
-luabind_CFLAGS
-luabind_LIBS'
+SDL_LIBS'
 
 
 # Initialize some variables set by options.
@@ -1293,12 +1285,6 @@ Some influential environment variables:
   PKG_CONFIG  path to pkg-config utility
   SDL_CFLAGS  C compiler flags for SDL, overriding pkg-config
   SDL_LIBS    linker flags for SDL, overriding pkg-config
-  lua_CFLAGS  C compiler flags for lua, overriding pkg-config
-  lua_LIBS    linker flags for lua, overriding pkg-config
-  luabind_CFLAGS
-              C compiler flags for luabind, overriding pkg-config
-  luabind_LIBS
-              linker flags for luabind, overriding pkg-config
 
 Use these variables to override the choices made by `configure' or to help
 it to find libraries and programs with nonstandard names/locations.
@@ -3320,224 +3306,6 @@ See \`config.log' for more details." "$LINENO" 5; }
 else
 	SDL_CFLAGS=$pkg_cv_SDL_CFLAGS
 	SDL_LIBS=$pkg_cv_SDL_LIBS
-        { $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
-$as_echo "yes" >&6; }
-	:
-fi
-
-
-pkg_failed=no
-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for lua" >&5
-$as_echo_n "checking for lua... " >&6; }
-
-if test -n "$PKG_CONFIG"; then
-    if test -n "$lua_CFLAGS"; then
-        pkg_cv_lua_CFLAGS="$lua_CFLAGS"
-    else
-        if test -n "$PKG_CONFIG" && \
-    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"
-        lua5.1
-\""; } >&5
-  ($PKG_CONFIG --exists --print-errors "
-        lua5.1
-") 2>&5
-  ac_status=$?
-  $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
-  test $ac_status = 0; }; then
-  pkg_cv_lua_CFLAGS=`$PKG_CONFIG --cflags "
-        lua5.1
-" 2>/dev/null`
-else
-  pkg_failed=yes
-fi
-    fi
-else
-	pkg_failed=untried
-fi
-if test -n "$PKG_CONFIG"; then
-    if test -n "$lua_LIBS"; then
-        pkg_cv_lua_LIBS="$lua_LIBS"
-    else
-        if test -n "$PKG_CONFIG" && \
-    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"
-        lua5.1
-\""; } >&5
-  ($PKG_CONFIG --exists --print-errors "
-        lua5.1
-") 2>&5
-  ac_status=$?
-  $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
-  test $ac_status = 0; }; then
-  pkg_cv_lua_LIBS=`$PKG_CONFIG --libs "
-        lua5.1
-" 2>/dev/null`
-else
-  pkg_failed=yes
-fi
-    fi
-else
-	pkg_failed=untried
-fi
-
-
-
-if test $pkg_failed = yes; then
-
-if $PKG_CONFIG --atleast-pkgconfig-version 0.20; then
-        _pkg_short_errors_supported=yes
-else
-        _pkg_short_errors_supported=no
-fi
-        if test $_pkg_short_errors_supported = yes; then
-	        lua_PKG_ERRORS=`$PKG_CONFIG --short-errors --errors-to-stdout --print-errors "
-        lua5.1
-"`
-        else
-	        lua_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "
-        lua5.1
-"`
-        fi
-	# Put the nasty error message in config.log where it belongs
-	echo "$lua_PKG_ERRORS" >&5
-
-	as_fn_error "Package requirements (
-        lua5.1
-) were not met:
-
-$lua_PKG_ERRORS
-
-Consider adjusting the PKG_CONFIG_PATH environment variable if you
-installed software in a non-standard prefix.
-
-Alternatively, you may set the environment variables lua_CFLAGS
-and lua_LIBS to avoid the need to call pkg-config.
-See the pkg-config man page for more details.
-" "$LINENO" 5
-elif test $pkg_failed = untried; then
-	{ { $as_echo "$as_me:${as_lineno-$LINENO}: error: in \`$ac_pwd':" >&5
-$as_echo "$as_me: error: in \`$ac_pwd':" >&2;}
-as_fn_error "The pkg-config script could not be found or is too old.  Make sure it
-is in your PATH or set the PKG_CONFIG environment variable to the full
-path to pkg-config.
-
-Alternatively, you may set the environment variables lua_CFLAGS
-and lua_LIBS to avoid the need to call pkg-config.
-See the pkg-config man page for more details.
-
-To get pkg-config, see <http://pkg-config.freedesktop.org/>.
-See \`config.log' for more details." "$LINENO" 5; }
-else
-	lua_CFLAGS=$pkg_cv_lua_CFLAGS
-	lua_LIBS=$pkg_cv_lua_LIBS
-        { $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
-$as_echo "yes" >&6; }
-	:
-fi
-
-
-pkg_failed=no
-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for luabind" >&5
-$as_echo_n "checking for luabind... " >&6; }
-
-if test -n "$PKG_CONFIG"; then
-    if test -n "$luabind_CFLAGS"; then
-        pkg_cv_luabind_CFLAGS="$luabind_CFLAGS"
-    else
-        if test -n "$PKG_CONFIG" && \
-    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"
-        luabind
-\""; } >&5
-  ($PKG_CONFIG --exists --print-errors "
-        luabind
-") 2>&5
-  ac_status=$?
-  $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
-  test $ac_status = 0; }; then
-  pkg_cv_luabind_CFLAGS=`$PKG_CONFIG --cflags "
-        luabind
-" 2>/dev/null`
-else
-  pkg_failed=yes
-fi
-    fi
-else
-	pkg_failed=untried
-fi
-if test -n "$PKG_CONFIG"; then
-    if test -n "$luabind_LIBS"; then
-        pkg_cv_luabind_LIBS="$luabind_LIBS"
-    else
-        if test -n "$PKG_CONFIG" && \
-    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"
-        luabind
-\""; } >&5
-  ($PKG_CONFIG --exists --print-errors "
-        luabind
-") 2>&5
-  ac_status=$?
-  $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
-  test $ac_status = 0; }; then
-  pkg_cv_luabind_LIBS=`$PKG_CONFIG --libs "
-        luabind
-" 2>/dev/null`
-else
-  pkg_failed=yes
-fi
-    fi
-else
-	pkg_failed=untried
-fi
-
-
-
-if test $pkg_failed = yes; then
-
-if $PKG_CONFIG --atleast-pkgconfig-version 0.20; then
-        _pkg_short_errors_supported=yes
-else
-        _pkg_short_errors_supported=no
-fi
-        if test $_pkg_short_errors_supported = yes; then
-	        luabind_PKG_ERRORS=`$PKG_CONFIG --short-errors --errors-to-stdout --print-errors "
-        luabind
-"`
-        else
-	        luabind_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "
-        luabind
-"`
-        fi
-	# Put the nasty error message in config.log where it belongs
-	echo "$luabind_PKG_ERRORS" >&5
-
-	as_fn_error "Package requirements (
-        luabind
-) were not met:
-
-$luabind_PKG_ERRORS
-
-Consider adjusting the PKG_CONFIG_PATH environment variable if you
-installed software in a non-standard prefix.
-
-Alternatively, you may set the environment variables luabind_CFLAGS
-and luabind_LIBS to avoid the need to call pkg-config.
-See the pkg-config man page for more details.
-" "$LINENO" 5
-elif test $pkg_failed = untried; then
-	{ { $as_echo "$as_me:${as_lineno-$LINENO}: error: in \`$ac_pwd':" >&5
-$as_echo "$as_me: error: in \`$ac_pwd':" >&2;}
-as_fn_error "The pkg-config script could not be found or is too old.  Make sure it
-is in your PATH or set the PKG_CONFIG environment variable to the full
-path to pkg-config.
-
-Alternatively, you may set the environment variables luabind_CFLAGS
-and luabind_LIBS to avoid the need to call pkg-config.
-See the pkg-config man page for more details.
-
-To get pkg-config, see <http://pkg-config.freedesktop.org/>.
-See \`config.log' for more details." "$LINENO" 5; }
-else
-	luabind_CFLAGS=$pkg_cv_luabind_CFLAGS
-	luabind_LIBS=$pkg_cv_luabind_LIBS
         { $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
 $as_echo "yes" >&6; }
 	:

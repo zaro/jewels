@@ -4,8 +4,6 @@
 #include "point.h"
 #include <tr1/memory>
 
-#include "luahelper.h"
-
 class Animator;
 
 typedef std::tr1::shared_ptr<Animator> AnimatorPtr;
@@ -21,12 +19,11 @@ public:
   static int clock_period_ms() ;
 
 protected:
-  friend std::tr1::shared_ptr<Animator> Animator_create(int time_ms);;
   Animator(int time_ms = -1) : animate_time_ms_(time_ms) { }
 
 public:
 
-  static AnimatorPtr create(int time_ms);
+  static AnimatorPtr create(int time_ms=-1);
   void clock_tick() {
     if( animate_time_ms_ > clock_period_ms_ ) {
       animate_time_ms_ -= clock_period_ms_;
@@ -40,8 +37,9 @@ public:
     clock_tick();
   }
   virtual bool ended() { return (animate_time_ms_ == 0) ; }
+  virtual std::string to_string();
 
-  static void register_in_lua(lua_State* L);
+  static void register_in_python();
 
 };
 
