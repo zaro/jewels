@@ -53,13 +53,17 @@ AnimatorPtr AnimatorFactory::create_py_animator(int time_ms,const std::string& n
   std::cout << "hi from create_py_animator" << std::endl;
 
   // Retrieve the main module
-  object jewels_module = import("jewels");
+  //object jewels_module = import("jewels");
+  PyObject* jewels_module=PyImport_ImportModule("jewels");
 
-  object main_module = import("__main__");
+  //object main_module = import("__main__");
+  PyObject* main_module=PyImport_ImportModule("__main__");
 
   // Retrieve the main module's namespace
-  object jewels(jewels_module.attr("__dict__"));
-  object global(main_module.attr("__dict__"));
+  //object jewels(jewels_module.attr("__dict__"));
+  PyObject* jewels=PyObject_GetAttrString(jewels_module,"__dict__");
+  //object global(main_module.attr("__dict__"));
+  PyObject* global=PyObject_GetAttrString(main_module,"__dict__");
 
 
   // Define the derived class in Python.
@@ -71,7 +75,17 @@ AnimatorPtr AnimatorFactory::create_py_animator(int time_ms,const std::string& n
   //  global, global);
 
   //object pyAnimator = jewels[name];
-  object pyAnimator = global[name];
+  //object pyAnimator = global[name];
+  PyObject* animator_class_name= PyString_FromString(name.c_str());
+  PyObject* animator_class = PyObject_GetItem(global,animator_class_name);
+  PyObject* py_animator = 0;//PyObject_New(animator_class);
+
+  std::cout << "=================" << std::endl;
+  std::cout << "Dump: " << name << std::endl;
+  std::cout << "=================" << std::endl;
+  PyObject_Print(py_animator, stdout , 0);
+  std::cout << std::endl;
+  std::cout << "=================" << std::endl;
 
   // Creating and using instances of the C++ class is as easy as always.
   //CppDerived cpp;
@@ -84,7 +98,16 @@ AnimatorPtr AnimatorFactory::create_py_animator(int time_ms,const std::string& n
   //python::object py_base = PythonDerived();
   //Base& py = python::extract<Base&>(py_base) BOOST_EXTRACT_WORKAROUND;
 
-  object py_rval = pyAnimator();
+  //object py_rval = pyAnimator();
+  Py_XDECREF(animator_class);
+  Py_XDECREF(animator_class_name);
+  Py_XDECREF(py_animator);
+
+  Py_XDECREF(jewels_module);
+  Py_XDECREF(main_module);
+  Py_XDECREF(jewels);
+  Py_XDECREF(global);
+
 
 
   return AnimatorPtr();
