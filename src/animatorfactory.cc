@@ -1,6 +1,8 @@
 #include "animatorfactory.h"
 #include <iostream>
 
+#include "pyanimator.h"
+
 #include <boost/bind.hpp>
 #include <boost/python.hpp>
 #include "python_helper.h"
@@ -49,6 +51,8 @@ void AnimatorFactory::py_register_animator(const std::string& name){
 }
 
 AnimatorPtr AnimatorFactory::create_py_animator(int time_ms,const std::string& name){
+  return PyAnimator::create(time_ms,name);
+  /*
   using namespace boost::python;
   std::cout << "hi from create_py_animator" << std::endl;
 
@@ -111,6 +115,7 @@ AnimatorPtr AnimatorFactory::create_py_animator(int time_ms,const std::string& n
 
 
   return AnimatorPtr();
+  */
 }
 
 void AnimatorFactory::register_in_python(){

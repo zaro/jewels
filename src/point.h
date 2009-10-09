@@ -1,6 +1,9 @@
 #ifndef POINT_H
 #define POINT_H
 
+#include <iostream>
+#include <sstream>
+
 enum Axis { X = 0, Y = 1 , Z = 2 , W=3 };
 
 class Point {
@@ -37,6 +40,14 @@ public:
   float * as_fv() {
     return axis;
   }
+
+  std::string to_string() {
+    std::ostringstream o;
+    o << "Point[x(" << x() << "),y(" << y() << "),z(" << z() << ")]";
+    return o.str();
+  }
+
+  static void register_in_python();
 };
 
 

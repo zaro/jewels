@@ -1,4 +1,5 @@
 #include "animator.h"
+#include <string>
 
 #include <boost/python.hpp>
 
@@ -22,6 +23,8 @@ AnimatorPtr Animator::create(int time_ms) {
 std::string Animator::to_string(){
   return "Animator";
 }
+
+
 
 struct AnimatorWrap : Animator, boost::python::wrapper<Animator>
 {

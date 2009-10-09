@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+#include "point.h"
 #include "animator.h"
 #include "animatorfactory.h"
 #include "stockanimators.h"
@@ -8,6 +9,7 @@
 #include <boost/python.hpp>
 
 BOOST_PYTHON_MODULE(jewels) {
+  Point::register_in_python();
   Animator::register_in_python();
   AnimatorFactory::register_in_python();
 }

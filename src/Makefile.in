@@ -48,11 +48,12 @@ am_jewels_OBJECTS = jewels.$(OBJEXT) game.$(OBJEXT) \
 	screenobject.$(OBJEXT) material.$(OBJEXT) \
 	materialfactory.$(OBJEXT) camera.$(OBJEXT) \
 	cubicjewel.$(OBJEXT) wobblycube.$(OBJEXT) light.$(OBJEXT) \
-	board.$(OBJEXT) animator.$(OBJEXT) animatorfactory.$(OBJEXT)
+	board.$(OBJEXT) animator.$(OBJEXT) animatorfactory.$(OBJEXT) \
+	pyanimator.$(OBJEXT)
 jewels_OBJECTS = $(am_jewels_OBJECTS)
 jewels_LDADD = $(LDADD)
 am_python_test_OBJECTS = python_test.$(OBJEXT) animator.$(OBJEXT) \
-	animatorfactory.$(OBJEXT)
+	animatorfactory.$(OBJEXT) pyanimator.$(OBJEXT) point.$(OBJEXT)
 python_test_OBJECTS = $(am_python_test_OBJECTS)
 python_test_LDADD = $(LDADD)
 DEFAULT_INCLUDES = -I.@am__isrc@
@@ -159,8 +160,8 @@ top_srcdir = @top_srcdir@
 AUTOMAKE_OPTIONS = gnu
 AM_CPPFLAGS = $(SDL_CFLAGS) `python-config --cflags` -DBOOST_PYTHON_STATIC_MODULE
 AM_LDFLAGS = $(SDL_LIBS) `python-config --libs` -lboost_python-mt-py26
-jewels_SOURCES = jewels.cc game.cc screenobject.cc material.cc materialfactory.cc camera.cc cubicjewel.cc wobblycube.cc light.cc board.cc animator.cc animatorfactory.cc
-python_test_SOURCES = python_test.cc animator.cc animatorfactory.cc
+jewels_SOURCES = jewels.cc game.cc screenobject.cc material.cc materialfactory.cc camera.cc cubicjewel.cc wobblycube.cc light.cc board.cc animator.cc animatorfactory.cc  pyanimator.cc
+python_test_SOURCES = python_test.cc animator.cc animatorfactory.cc pyanimator.cc point.cc
 all: all-am
 
 .SUFFIXES:
@@ -255,6 +256,8 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/light.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/material.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/materialfactory.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/point.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/pyanimator.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/python_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/screenobject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/wobblycube.Po@am__quote@

@@ -1,14 +1,13 @@
 from jewels import *
 from types import *
 
-print type(Animator)
 
-class BAnimator(Animator):
+class BAnimator:
+  def init(self,center,rot_vec,rot_angle):
+    print center
   def to_string(self):
     return "BAnimator"
   pass
-
-print dir(Animator)
 
 print dir(AnimatorFactory)
 AnimatorFactory.print_animators()
@@ -28,3 +27,5 @@ print dir(b)
 print type(b)
 print b.to_string()
 
+c,r,ra=Point(),Point(),0.3
+b.init(c,r,ra)
