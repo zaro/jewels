@@ -28,15 +28,14 @@ public:
   ~ScreenObject();
   void draw();
   void animate();
-	virtual void do_draw() =0;
+	virtual void do_draw();
 	virtual void do_animate();
 	virtual void set_selected(bool selected);
   virtual void add_animator(AnimatorPtr animator);
 	void draw_selection();
   Point& center() {  return center_; }
   Material& material() { return material_; }
-  
-  void register_in_python();
+
 };
 
 

@@ -19,13 +19,13 @@ public:
     axis[Z]=z;
     axis[W]=1.0 ;
   }
-  float x() {
+  float x() const {
     return axis[X];
   }
-  float y() {
+  float y() const {
     return axis[Y];
   }
-  float z() {
+  float z() const {
     return axis[Z];
   }
   void x(float x) {
@@ -41,7 +41,7 @@ public:
     return axis;
   }
 
-  std::string to_string() {
+  std::string to_string() const {
     std::ostringstream o;
     o << "Point[x(" << x() << "),y(" << y() << "),z(" << z() << ")]";
     return o.str();

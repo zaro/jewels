@@ -19,9 +19,9 @@ AnimatorPtr PyAnimator::create(int time_ms,const std::string& python_class_name)
 
 void PyAnimator::init(Point& center,Point& rot_vec,float& rot_angle) {
   //boost::python::call_method<void>(python_object_.ptr(), "init",boost::ref(center),boost::ref(rot_vec),boost::ref(rot_angle)  );
-  std::cout << center.to_string() << std::endl;
+  std::cout << "PyAnimator center:" <<center.to_string() << std::endl;
   boost::python::call_method<void>(python_object_.ptr(), "init" , boost::ref(center),boost::ref(rot_vec),rot_angle );
-  std::cout << center.to_string() << std::endl;
+  std::cout << "PyAnimator center:"<< center.to_string() << std::endl;
 }
 
 void PyAnimator::next(Point& center,Point& rot_vec,float& rot_angle) {

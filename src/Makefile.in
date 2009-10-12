@@ -54,7 +54,9 @@ jewels_OBJECTS = $(am_jewels_OBJECTS)
 jewels_LDADD = $(LDADD)
 am_python_test_OBJECTS = python_test.$(OBJEXT) animator.$(OBJEXT) \
 	animatorfactory.$(OBJEXT) pyanimator.$(OBJEXT) point.$(OBJEXT) \
-	screenobject.$(OBJEXT)
+	screenobject.$(OBJEXT) pyscreenobject.$(OBJEXT) \
+	material.$(OBJEXT) wobblycube.$(OBJEXT) \
+	materialfactory.$(OBJEXT)
 python_test_OBJECTS = $(am_python_test_OBJECTS)
 python_test_LDADD = $(LDADD)
 DEFAULT_INCLUDES = -I.@am__isrc@
@@ -159,10 +161,10 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 AUTOMAKE_OPTIONS = gnu
-AM_CPPFLAGS = $(SDL_CFLAGS) `python-config --cflags` -DBOOST_PYTHON_STATIC_MODULE
+AM_CPPFLAGS = $(SDL_CFLAGS) `python-config --cflags` -DBOOST_ALL_NO_LIB=1
 AM_LDFLAGS = $(SDL_LIBS) `python-config --libs` -lboost_python-mt-py26
 jewels_SOURCES = jewels.cc game.cc screenobject.cc material.cc materialfactory.cc camera.cc cubicjewel.cc wobblycube.cc light.cc board.cc animator.cc animatorfactory.cc  pyanimator.cc
-python_test_SOURCES = python_test.cc animator.cc animatorfactory.cc pyanimator.cc point.cc screenobject.cc
+python_test_SOURCES = python_test.cc animator.cc animatorfactory.cc pyanimator.cc point.cc screenobject.cc pyscreenobject.cc material.cc wobblycube.cc materialfactory.cc
 all: all-am
 
 .SUFFIXES:
@@ -259,6 +261,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/materialfactory.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/point.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/pyanimator.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/pyscreenobject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/python_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/screenobject.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/wobblycube.Po@am__quote@

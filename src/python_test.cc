@@ -4,8 +4,9 @@
 #include "animator.h"
 #include "animatorfactory.h"
 #include "stockanimators.h"
-#include "screenobject.h"
+#include "pyscreenobject.h"
 
+#define BOOST_PYTHON_STATIC_MODULE
 #include <Python.h>
 #include <boost/python.hpp>
 
@@ -13,7 +14,7 @@ BOOST_PYTHON_MODULE(jewels) {
   Point::register_in_python();
   Animator::register_in_python();
   AnimatorFactory::register_in_python();
-  ScreenObject::register_in_python();
+  PyScreenObject::register_in_python();
 }
 
 int

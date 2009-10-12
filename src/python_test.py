@@ -4,7 +4,9 @@ from types import *
 
 class BAnimator:
   def init(self,center,rot_vec,rot_angle):
-    print center
+    print "BAnimator center: " ,center.to_string()
+    center.x(3.0)
+    print "BAnimator center: " ,center.to_string()
   def to_string(self):
     return "BAnimator"
   pass
@@ -27,5 +29,7 @@ print dir(b)
 print type(b)
 print b.to_string()
 
-//c,r,ra=Point(),Point(),0.3
-b.init(c,r,ra)
+#c,r,ra=Point(),Point(),0.3
+so=ScreenObject()
+#b.init(c,r,ra)
+so.add_animator(b)
