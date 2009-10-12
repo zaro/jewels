@@ -28,6 +28,14 @@ std::string Animator::to_string(){
 
 struct AnimatorWrap : Animator, boost::python::wrapper<Animator>
 {
+    void init(Point& center,Point& rot_vec,float& rot_angle)
+    {
+        if (boost::python::override f = this->get_override("init"))
+           f(center,rot_vec,rot_angle); // *note*
+        Animator::init(center,rot_vec,rot_angle);
+    }
+    void default_init(Point& center,Point& rot_vec,float& rot_angle) { this->Animator::init(center,rot_vec,rot_angle); }
+
     std::string to_string()
     {
         if (boost::python::override f = this->get_override("to_string"))
@@ -49,6 +57,7 @@ void Animator::register_in_python(){
      .staticmethod("set_clock_period_ms")
      .def("clock_period_ms", &Animator::clock_period_ms)
      .staticmethod("clock_period_ms")
-     .def("to_string",&Animator::to_string ,&AnimatorWrap::to_string )
+     .def("init",&Animator::init ,&AnimatorWrap::default_init )
+     .def("to_string",&Animator::to_string ,&AnimatorWrap::default_to_string )
   ;
 }

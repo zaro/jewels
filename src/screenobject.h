@@ -35,6 +35,8 @@ public:
 	void draw_selection();
   Point& center() {  return center_; }
   Material& material() { return material_; }
+  
+  void register_in_python();
 };
 
 

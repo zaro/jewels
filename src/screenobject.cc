@@ -2,6 +2,7 @@
 #include "SDL/SDL_opengl.h"
 #include "wobblycube.h"
 
+#include <boost/python.hpp>
 
 ScreenObject::ScreenObject(int name):
 rot_angle_(0.0),
@@ -64,4 +65,15 @@ void ScreenObject::do_animate(){
 void ScreenObject::add_animator(AnimatorPtr animator){
   animators_.push_back( animator );
   animator->init(center_,rot_vec_,rot_angle_);
+}
+
+void ScreenObject::register_in_python(){
+  using namespace boost::python;
+
+  class_<ScreenObject>("ScreenObject")
+     .def(init<int>())
+     .def("animate",&ScreenObject::animate)
+     .def("add_animator",&ScreenObject::add_animator)
+  ;
+
 }

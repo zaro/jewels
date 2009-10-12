@@ -53,7 +53,8 @@ am_jewels_OBJECTS = jewels.$(OBJEXT) game.$(OBJEXT) \
 jewels_OBJECTS = $(am_jewels_OBJECTS)
 jewels_LDADD = $(LDADD)
 am_python_test_OBJECTS = python_test.$(OBJEXT) animator.$(OBJEXT) \
-	animatorfactory.$(OBJEXT) pyanimator.$(OBJEXT) point.$(OBJEXT)
+	animatorfactory.$(OBJEXT) pyanimator.$(OBJEXT) point.$(OBJEXT) \
+	screenobject.$(OBJEXT)
 python_test_OBJECTS = $(am_python_test_OBJECTS)
 python_test_LDADD = $(LDADD)
 DEFAULT_INCLUDES = -I.@am__isrc@
@@ -161,7 +162,7 @@ AUTOMAKE_OPTIONS = gnu
 AM_CPPFLAGS = $(SDL_CFLAGS) `python-config --cflags` -DBOOST_PYTHON_STATIC_MODULE
 AM_LDFLAGS = $(SDL_LIBS) `python-config --libs` -lboost_python-mt-py26
 jewels_SOURCES = jewels.cc game.cc screenobject.cc material.cc materialfactory.cc camera.cc cubicjewel.cc wobblycube.cc light.cc board.cc animator.cc animatorfactory.cc  pyanimator.cc
-python_test_SOURCES = python_test.cc animator.cc animatorfactory.cc pyanimator.cc point.cc
+python_test_SOURCES = python_test.cc animator.cc animatorfactory.cc pyanimator.cc point.cc screenobject.cc
 all: all-am
 
 .SUFFIXES:

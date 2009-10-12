@@ -21,11 +21,11 @@ a=AnimatorFactory.create_animator('xaxe_rotator',-1)
 print dir(a)
 print type(a)
 print a.to_string()
-
+print  "---------------"
 b=AnimatorFactory.create_animator('BAnimator',-1)
 print dir(b)
 print type(b)
 print b.to_string()
 
-c,r,ra=Point(),Point(),0.3
+//c,r,ra=Point(),Point(),0.3
 b.init(c,r,ra)
