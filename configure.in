@@ -14,6 +14,7 @@ CXXFLAGS="-O0 -g3"
 AC_CHECK_LIB(stdc++, main,,AC_MSG_ERROR(jewels requires libstdc++))
 
 LIBS="-lGL -lGLU -lm"
+LIBS="-framework OpenGL"
 
 PKG_CHECK_MODULES(SDL, [
         sdl

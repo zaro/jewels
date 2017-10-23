@@ -3,7 +3,7 @@
 
 #include "screenobject.h"
 #include <vector>
-#include <tr1/memory>
+#include <memory>
 
 
 class  Board : public ScreenObject{
@@ -32,6 +32,6 @@ public:
   void object_clicked(int name);
 };
 
-typedef std::tr1::shared_ptr<Board> BoardPtr;
+typedef std::shared_ptr<Board> BoardPtr;
 
 #endif // BOARD_H

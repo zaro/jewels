@@ -4,11 +4,11 @@
 
 #include "material.h"
 #include "point.h"
-#include <tr1/memory>
+#include <memory>
 
 class ScreenObject ;
 
-typedef std::tr1::shared_ptr<ScreenObject> ScreenObjectPtr;
+typedef std::shared_ptr<ScreenObject> ScreenObjectPtr;
 
 class ScreenObject {
 protected:
@@ -34,4 +34,3 @@ public:
 
 
 #endif // SCREENOBJECT_H
-

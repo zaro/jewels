@@ -9,7 +9,7 @@
 #define SCR_HEIGHT 480
 
 
-int main() {
+int main(int argc, char *argv[]) {
   std::cout << "Starting...\n";
 
   if( SDL_Init( SDL_INIT_EVERYTHING ) < 0 ){
